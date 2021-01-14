@@ -41,13 +41,13 @@ class OneSignalAdapter implements NotificationHandler {
   void _setUpNotificationReceptionHandlers() {
     _oneSignal.setNotificationReceivedHandler((osNotification) {
       if (osNotification.shown) _addToPushNotificationStream(osNotification);
-      _silentNotificationStreamController.sink
+      _silentNotificationStreamController
           .add(osNotification.payload.additionalData);
     });
   }
 
   void _addToPushNotificationStream(OSNotification osNotification) {
-    _pushNotificationStreamController.sink.add(
+    _pushNotificationStreamController.add(
       Notification(
         title: osNotification.payload.title,
         subTitle: osNotification.payload.subtitle,

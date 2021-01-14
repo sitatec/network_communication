@@ -23,4 +23,9 @@ class NotificationException implements Exception {
         );
 }
 
-enum NotificationExceptionType { unknown, unknownRecipientId }
+enum NotificationExceptionType {
+  unknown,
+
+  /// When the recipient id isn't registered on the notification server
+  unknownRecipientId
+}
