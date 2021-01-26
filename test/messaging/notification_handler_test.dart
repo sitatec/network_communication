@@ -46,7 +46,7 @@ void main() {
 
   setUp(() {
     oneSignal = MockOneSignal();
-    notificationHandler = OneSignalAdapter(oneSignal: oneSignal);
+    notificationHandler = OneSignalAdapter.forTest(oneSignal: oneSignal);
     when(oneSignal.postNotificationWithJson(any)).thenAnswer(
         (_) => Future.value({'id': 'lsjf-jsdjfsls-sjfjlsjf', 'recipient': 1}));
   });

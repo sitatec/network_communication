@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:network_communication/src/messaging/on_signal_adapter.dart';
 
 /// A Notification Handler (Send & Receive)
 abstract class NotificationHandler {
@@ -7,6 +8,8 @@ abstract class NotificationHandler {
 
   /// The silent notifications stream.
   Stream<Map<String, dynamic>> get silentNotificationStream;
+
+  static NotificationHandler get instance => OneSignalAdapter();
 
   /// Initializes all resources needed by the [NotificationHandler].
   ///

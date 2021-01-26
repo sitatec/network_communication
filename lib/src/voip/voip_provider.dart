@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:network_communication/src/voip/agora_rtc_engine_adapter.dart';
 
 /// A Voice call provider.
 abstract class VoIPProvider with ChangeNotifier {
@@ -6,6 +7,9 @@ abstract class VoIPProvider with ChangeNotifier {
   Stream<String> get incomingCallStream;
 
   Stream<VoIPConnectionState> get connectionStateStream;
+
+  /// Returns the VoIPProvider singleton.
+  static VoIPProvider get instance => AgoraRtcEnginAdapter();
 
   /// Initializes all required resources.
   ///

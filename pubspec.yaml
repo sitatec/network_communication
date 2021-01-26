@@ -14,9 +14,6 @@ dependencies:
   onesignal_flutter: ^2.6.2
   permission_handler: ^5.0.1+1
 
-  
-  # firebase_core: "^0.5.3"
-  # firebase_messaging: "^8.0.0-dev.11"
 
 dev_dependencies:
   flutter_test:

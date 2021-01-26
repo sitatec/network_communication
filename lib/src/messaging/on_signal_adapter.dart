@@ -15,9 +15,15 @@ class OneSignalAdapter implements NotificationHandler {
   final _pushNotificationStreamController =
       StreamController<Notification>.broadcast();
 
-  OneSignalAdapter({
+  static final _singleton = OneSignalAdapter._internal();
+
+  factory OneSignalAdapter() => _singleton;
+
+  OneSignalAdapter._internal() : _oneSignal = OneSignal.shared;
+
+  OneSignalAdapter.forTest({
     OneSignal oneSignal,
-  }) : _oneSignal = oneSignal ?? OneSignal.shared;
+  }) : _oneSignal = oneSignal;
 
   @override
   Stream<Notification> get pushNotificationStream =>

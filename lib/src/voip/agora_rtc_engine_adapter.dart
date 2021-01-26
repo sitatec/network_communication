@@ -22,14 +22,23 @@ class AgoraRtcEnginAdapter with ChangeNotifier implements VoIPProvider {
   final _connectionStateStreamController =
       StreamController<VoIPConnectionState>.broadcast();
 
-  AgoraRtcEnginAdapter({
-    RtcEngine realTimeCommunicationEngine,
-    RtcEngineEventHandler eventHandler,
-    PermissionHandler permissionHandler,
+  static final _singleton = AgoraRtcEnginAdapter._internal();
+
+  factory AgoraRtcEnginAdapter() => _singleton;
+
+  AgoraRtcEnginAdapter._internal()
+      : _eventHandler = RtcEngineEventHandler(),
+        _permissionHandler = PermissionHandler(),
+        _notificationHandler = NotificationHandler.instance;
+
+  AgoraRtcEnginAdapter.forTest({
+    @required RtcEngine realTimeCommunicationEngine,
+    @required RtcEngineEventHandler eventHandler,
+    @required PermissionHandler permissionHandler,
     @required NotificationHandler notificationHandler,
   })  : _rtcEngine = realTimeCommunicationEngine,
-        _eventHandler = eventHandler ?? RtcEngineEventHandler(),
-        _permissionHandler = permissionHandler ?? PermissionHandler(),
+        _eventHandler = eventHandler,
+        _permissionHandler = permissionHandler,
         _notificationHandler = notificationHandler;
 
   @override

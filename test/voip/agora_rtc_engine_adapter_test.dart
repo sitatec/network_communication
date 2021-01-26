@@ -43,7 +43,7 @@ void main() {
     eventHandler = MockRtcEngineEventHandler();
     permissionHandler = MockPermissionHandler();
     notificationHandler = MockNotificationHandler();
-    voipProvider = AgoraRtcEnginAdapter(
+    voipProvider = AgoraRtcEnginAdapter.forTest(
       realTimeCommunicationEngine: rtcEngine,
       eventHandler: eventHandler,
       permissionHandler: permissionHandler,
