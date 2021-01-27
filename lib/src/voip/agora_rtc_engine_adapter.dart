@@ -10,7 +10,7 @@ import '../config.dart';
 import 'voip_exception.dart';
 import 'voip_provider.dart';
 
-class AgoraRtcEnginAdapter with ChangeNotifier implements VoIPProvider {
+class AgoraRtcEnginAdapter implements VoIPProvider {
   RtcEngine _rtcEngine;
   final RtcEngineEventHandler _eventHandler;
   final PermissionHandler _permissionHandler;
@@ -68,6 +68,7 @@ class AgoraRtcEnginAdapter with ChangeNotifier implements VoIPProvider {
     await _rtcEngine.setChannelProfile(ChannelProfile.Communication);
     await _rtcEngine.enableAudio();
     _rtcEngine.setEventHandler(_eventHandler);
+    await _rtcEngine.setParameters('{"che.audio.opensl":true}');
     _handleConnectionStateChanges();
   }
 

@@ -60,7 +60,8 @@ void main() {
       permissionHandler.requestMicrophonePermission(),
       rtcEngine.setChannelProfile(ChannelProfile.Communication),
       rtcEngine.enableAudio(),
-      rtcEngine.setEventHandler(eventHandler)
+      rtcEngine.setEventHandler(eventHandler),
+      rtcEngine.setParameters('{"che.audio.opensl":true}')
     ]);
     expect(MockNotificationHandler.silentNotificatiionListenerCount, 1);
   });

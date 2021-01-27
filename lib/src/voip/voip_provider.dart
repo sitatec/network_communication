@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:network_communication/src/voip/agora_rtc_engine_adapter.dart';
 
 /// A Voice call provider.
-abstract class VoIPProvider with ChangeNotifier {
+abstract class VoIPProvider {
   /// The incoming call identifiers stream.
   Stream<String> get incomingCallStream;
 
