@@ -206,8 +206,8 @@ class AgoraRtcEnginAdapter implements VoIPProvider {
         _rtcEngine.leaveChannel();
       } else {
         onCallLeft(CallLeaveReason.offline);
-        _rtcEngine
-            .leaveChannel(); // TODO if the user will be dropped offline the wifi is desabled on the device after 20s .
+        _rtcEngine.leaveChannel();
+        // TODO when the user will be dropped offline the wifi is desabled on the device after 20s .
       }
     };
   }
@@ -219,6 +219,18 @@ class AgoraRtcEnginAdapter implements VoIPProvider {
       recipientId: callId,
     );
   }
+
+  @override
+  Future<void> disableMicrophone() => _rtcEngine.muteLocalAudioStream(true);
+
+  @override
+  Future<void> disableSpeaker() => _rtcEngine.setEnableSpeakerphone(false);
+
+  @override
+  Future<void> enableMicrophone() => _rtcEngine.muteLocalAudioStream(false);
+
+  @override
+  Future<void> enableSpeaker() => _rtcEngine.setEnableSpeakerphone(true);
 }
 
 class PermissionHandler {

@@ -97,6 +97,18 @@ abstract class VoIPProvider {
   ///
   /// [callId] the call id
   Future<void> rejectCall(String callId);
+
+  /// Enable the speaker
+  Future<void> enableSpeaker();
+
+  /// Disable the speaker
+  Future<void> disableSpeaker();
+
+  /// Disable the microphone
+  Future<void> disableMicrophone();
+
+  /// Enable the microphone
+  Future<void> enableMicrophone();
 }
 
 enum CallLeaveReason {
